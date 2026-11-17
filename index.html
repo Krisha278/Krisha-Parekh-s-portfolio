@@ -10,7 +10,9 @@
 
     <style>
 
-        /* GENERAL STYLING */
+        /* =========================
+           GENERAL STYLING
+        ========================= */
 
         * {
             margin: 0;
@@ -26,7 +28,10 @@
             line-height: 1.7;
         }
 
-        /* NAVIGATION BAR */
+
+        /* =========================
+           NAVIGATION BAR
+        ========================= */
 
         nav {
             background-color: #f4e9ef;
@@ -68,10 +73,82 @@
             color: white;
         }
 
-        /* HOME SECTION */
+
+        /* =========================
+           HANGING WELCOME CARD
+        ========================= */
+
+        .hello-hanger {
+            position: absolute;
+            top: 85px;
+            right: 8%;
+            width: 175px;
+            padding: 25px 15px 20px;
+            text-align: center;
+            background: #f6dce7;
+            color: #76566e;
+            border-radius: 0 0 18px 18px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.10);
+            z-index: 10;
+            transform-origin: top center;
+            animation: hangDrop 1.2s ease-out;
+        }
+
+        .hello-hanger::before {
+            content: "";
+            position: absolute;
+            top: -85px;
+            left: 50%;
+            width: 2px;
+            height: 85px;
+            background: #b99aab;
+        }
+
+        .hello-small {
+            font-size: 10px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .hello-hanger h2 {
+            font-size: 23px;
+            margin: 8px 0;
+        }
+
+        .hello-hanger p {
+            font-size: 13px;
+        }
+
+        @keyframes hangDrop {
+
+            0% {
+                transform: translateY(-180px) rotate(-8deg);
+                opacity: 0;
+            }
+
+            70% {
+                transform: translateY(10px) rotate(5deg);
+                opacity: 1;
+            }
+
+            85% {
+                transform: translateY(-5px) rotate(-3deg);
+            }
+
+            100% {
+                transform: translateY(0) rotate(0);
+            }
+
+        }
+
+
+        /* =========================
+           HOME SECTION
+        ========================= */
 
         #home {
             min-height: 90vh;
+
             background: linear-gradient(
                 135deg,
                 #f7e5ec,
@@ -82,7 +159,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 70px 10%;
+            padding: 100px 10% 70px;
             gap: 60px;
         }
 
@@ -123,7 +200,28 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.12);
         }
 
-        /* COMMON SECTION STYLING */
+        .contact-button {
+            display: inline-block;
+            padding: 13px 25px;
+            border-radius: 30px;
+            background-color: #fffaf7;
+            color: #76566e;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transition: 0.3s;
+        }
+
+        .contact-button:hover {
+            background-color: #a78db9;
+            color: white;
+            transform: translateY(-4px);
+        }
+
+
+        /* =========================
+           COMMON SECTION STYLING
+        ========================= */
 
         section {
             padding: 85px 10%;
@@ -142,11 +240,18 @@
             margin-bottom: 45px;
         }
 
-        /* PERSONALITY CARDS */
+
+        /* =========================
+           PERSONALITY CARDS
+        ========================= */
+
+        #qualities {
+            background-color: #fffaf7;
+        }
 
         .cards-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 25px;
         }
 
@@ -174,6 +279,10 @@
             background-color: #e4eee5;
         }
 
+        .card:nth-child(4) {
+            background-color: #f9eddc;
+        }
+
         .card h3 {
             color: #76566e;
             font-size: 21px;
@@ -190,27 +299,87 @@
             margin-bottom: 15px;
         }
 
-        /* ABOUT ME */
+
+        /* =========================
+           ABOUT ME SECTION
+        ========================= */
 
         #about {
-            background-color: #f8eff2;
+            background: linear-gradient(
+                135deg,
+                #f9e8ef,
+                #eee8f7,
+                #fff3e8
+            );
+        }
+
+        .about-label {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .about-label span {
+            background: #f6dce7;
+            color: #946b88;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-size: 14px;
+            letter-spacing: 1px;
         }
 
         .about-content {
             max-width: 950px;
             margin: auto;
-            background-color: #fffaf7;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+            background: rgba(255, 255, 255, 0.85);
+            padding: 50px;
+            border-radius: 25px;
+            border: 2px solid white;
+            box-shadow: 0 12px 35px rgba(140, 105, 130, 0.12);
+
+            animation: aboutPop 1s ease-out;
+            transition: 0.4s;
+        }
+
+        .about-content:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(140, 105, 130, 0.18);
         }
 
         .about-content p {
-            margin-bottom: 20px;
-            font-size: 16px;
+            margin-bottom: 22px;
+            font-size: 17px;
+            color: #625b65;
+            line-height: 1.9;
         }
 
-        /* EDUCATION */
+        .about-content p:first-child {
+            color: #946b88;
+            font-size: 19px;
+            font-weight: 500;
+        }
+
+        .about-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        @keyframes aboutPop {
+
+            0% {
+                opacity: 0;
+                transform: scale(0.85) translateY(35px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+
+        }
+
+
+        /* =========================
+           EDUCATION SECTION
+        ========================= */
 
         #education {
             background-color: #fffaf7;
@@ -223,6 +392,11 @@
             background-color: #e9e4f5;
             border-radius: 15px;
             border-left: 6px solid #a78db9;
+            transition: 0.3s;
+        }
+
+        .education-card:hover {
+            transform: translateX(6px);
         }
 
         .education-card h3 {
@@ -245,7 +419,10 @@
             font-weight: bold;
         }
 
-        /* EXPERIENCE */
+
+        /* =========================
+           EXPERIENCE SECTION
+        ========================= */
 
         #experience {
             background-color: #edf3ec;
@@ -259,6 +436,11 @@
             border-radius: 15px;
             border-left: 6px solid #a5bea5;
             box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            transition: 0.3s;
+        }
+
+        .experience-card:hover {
+            transform: translateX(6px);
         }
 
         .experience-card h3 {
@@ -267,7 +449,10 @@
             font-size: 21px;
         }
 
-        /* CONTACT */
+
+        /* =========================
+           CONTACT SECTION
+        ========================= */
 
         #contact {
             background: linear-gradient(
@@ -275,6 +460,7 @@
                 #f7e5ec,
                 #e9e4f5
             );
+
             text-align: center;
         }
 
@@ -294,25 +480,10 @@
             gap: 18px;
         }
 
-        .contact-button {
-            display: inline-block;
-            padding: 13px 25px;
-            border-radius: 30px;
-            background-color: #fffaf7;
-            color: #76566e;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-            transition: 0.3s;
-        }
 
-        .contact-button:hover {
-            background-color: #a78db9;
-            color: white;
-            transform: translateY(-4px);
-        }
-
-        /* FOOTER */
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
             background-color: #76566e;
@@ -322,17 +493,21 @@
             font-size: 14px;
         }
 
-        /* RESPONSIVE DESIGN */
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================= */
 
         @media (max-width: 900px) {
 
             #home {
                 flex-direction: column-reverse;
                 text-align: center;
+                padding-top: 70px;
             }
 
-            .cards-container {
-                grid-template-columns: 1fr;
+            .home-text h1 {
+                font-size: 42px;
             }
 
             nav {
@@ -344,12 +519,32 @@
                 flex-wrap: wrap;
                 justify-content: center;
             }
+
         }
 
-        @media (max-width: 500px) {
+        @media (max-width: 600px) {
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hello-hanger {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin: 0 auto 20px;
+            }
+
+            .hello-hanger::before {
+                display: none;
+            }
+
+            .about-content {
+                padding: 25px;
+            }
 
             .home-text h1 {
-                font-size: 38px;
+                font-size: 36px;
             }
 
             .profile-photo {
@@ -361,19 +556,19 @@
                 padding: 60px 7%;
             }
 
-            .about-content {
-                padding: 25px;
-            }
-
         }
 
     </style>
 
 </head>
 
+
 <body>
 
-    <!-- NAVIGATION BAR -->
+
+    <!-- =========================
+         NAVIGATION BAR
+    ========================= -->
 
     <nav>
 
@@ -390,7 +585,24 @@
     </nav>
 
 
-    <!-- HOME SECTION -->
+    <!-- =========================
+         HANGING WELCOME CARD
+    ========================= -->
+
+    <div class="hello-hanger">
+
+        <span class="hello-small">A LITTLE HELLO!</span>
+
+        <h2>Hi, there! ♡</h2>
+
+        <p>I'm Krisha. So glad you're here!</p>
+
+    </div>
+
+
+    <!-- =========================
+         HOME SECTION
+    ========================= -->
 
     <section id="home">
 
@@ -405,8 +617,10 @@
 
             <p>
                 If I could describe myself in 3 words,
-                it would be <span class="highlight">
-                bold, confident and hardworking.</span>
+                it would be
+                <span class="highlight">
+                    bold, confident and hardworking.
+                </span>
             </p>
 
             <p>
@@ -428,16 +642,21 @@
 
         </div>
 
+
         <div>
+
             <img src="krisha.jpeg"
-                 alt="My Profile Photograph"
+                 alt="Krisha Parekh"
                  class="profile-photo">
+
         </div>
 
     </section>
 
 
-    <!-- PERSONALITY CARDS -->
+    <!-- =========================
+         PERSONALITY CARDS
+    ========================= -->
 
     <section id="qualities">
 
@@ -449,11 +668,15 @@
             The things that define who I am.
         </p>
 
+
         <div class="cards-container">
+
+
+            <!-- CARD 1 -->
 
             <div class="card">
 
-                <div class="card-icon"></div>
+                <div class="card-icon">🎤</div>
 
                 <h3>Public Speaking</h3>
 
@@ -468,6 +691,8 @@
 
             </div>
 
+
+            <!-- CARD 2 -->
 
             <div class="card">
 
@@ -488,6 +713,8 @@
             </div>
 
 
+            <!-- CARD 3 -->
+
             <div class="card">
 
                 <div class="card-icon"></div>
@@ -505,12 +732,35 @@
 
             </div>
 
+
+            <!-- CARD 4 -->
+
+            <div class="card">
+
+                <div class="card-icon">🧠</div>
+
+                <h3>Consumer Psychology</h3>
+
+                <p>
+                    I like to understand what makes
+                    people tick. Understanding consumer
+                    psychology is one of the most
+                    important parts of creating a
+                    business, and observation plays
+                    a big role in it. That's where I come in!
+                </p>
+
+            </div>
+
+
         </div>
 
     </section>
 
 
-    <!-- ABOUT ME SECTION -->
+    <!-- =========================
+         ABOUT ME SECTION
+    ========================= -->
 
     <section id="about">
 
@@ -519,6 +769,14 @@
         <p class="section-subheading">
             Beyond academics, there is a lot more to me.
         </p>
+
+
+        <div class="about-label">
+
+            <span>✿ BEYOND THE RESUME ✿</span>
+
+        </div>
+
 
         <div class="about-content">
 
@@ -533,8 +791,7 @@
                 Music has always been an important part
                 of my life. I love singing and have
                 successfully cleared two examinations
-                from the Akhil Bharatiya Gandharva
-                Mahavidyalaya Mandal foundation.
+                from the Akhil Bharatiya foundation.
                 I can also play the keyboard and have
                 cleared three examinations from Trinity
                 College of Music.
@@ -568,7 +825,9 @@
     </section>
 
 
-    <!-- EDUCATION SECTION -->
+    <!-- =========================
+         EDUCATION SECTION
+    ========================= -->
 
     <section id="education">
 
@@ -597,12 +856,16 @@
 
         <div class="education-card">
 
-            <h3>Dual Degree in Digital Business
-                and Entrepreneurship</h3>
+            <h3>
+                Dual Degree in Digital Business
+                and Entrepreneurship
+            </h3>
 
             <p>
-                <strong>Indian Institute of Management
-                Bangalore (IIMB)</strong>
+                <strong>
+                    Indian Institute of Management
+                    Bangalore (IIMB)
+                </strong>
             </p>
 
             <p>
@@ -623,8 +886,8 @@
 
             <p>
                 I completed my Class 12 education
-                under the ICSE/ISC curriculum,
-                choosing the Commerce stream.
+                under the ISC curriculum, choosing
+                the Commerce stream.
             </p>
 
             <div class="marks">
@@ -655,7 +918,9 @@
     </section>
 
 
-    <!-- EXPERIENCE SECTION -->
+    <!-- =========================
+         EXPERIENCE SECTION
+    ========================= -->
 
     <section id="experience">
 
@@ -672,11 +937,11 @@
 
             <p>
                 I actively participated in science fairs
-                called Edisons for six years.
+                called Edisons for three consecutive years.
                 These experiences allowed me to explore
                 creative thinking, experimentation and
                 presenting ideas. I received an
-                <strong>A+ grade for  three years.</strong>
+                <strong>A+ grade for all three years.</strong>
             </p>
 
         </div>
@@ -716,7 +981,9 @@
     </section>
 
 
-    <!-- CONTACT SECTION -->
+    <!-- =========================
+         CONTACT SECTION
+    ========================= -->
 
     <section id="contact">
 
@@ -727,19 +994,23 @@
             and explore new opportunities.
         </p>
 
+
         <div class="contact-box">
 
             <div class="contact-links">
+
 
                 <a href="tel:8320121308"
                    class="contact-button">
                     📞 Call Me
                 </a>
 
+
                 <a href="mailto:krisha.parekh26@iimb.ac.in"
                    class="contact-button">
                     ✉ Email Me
                 </a>
+
 
                 <a href="https://www.linkedin.com/in/krisha-parekh-393484369/"
                    target="_blank"
@@ -748,6 +1019,7 @@
                     💼 LinkedIn
                 </a>
 
+
             </div>
 
         </div>
@@ -755,19 +1027,20 @@
     </section>
 
 
-    <!-- FOOTER -->
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
     <footer>
 
-        <p>
-            By Krisha Parekh ♡
-        </p>
+        <p>By Krisha Parekh ♡</p>
 
         <p>
             © 2026 Krisha Parekh. All Rights Reserved.
         </p>
 
     </footer>
+
 
 </body>
 
